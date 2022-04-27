@@ -46,6 +46,7 @@ public class AddUserCommand<T extends AddUserParameters> extends CommandBase<T> 
         } else {
             user.setId(userFromDb.getId());
             dbUserDao.update(user);
+	    dbUserDao.updateLastAdminCheckStatus(user.getId());
         }
         setActionReturnValue(user.getId());
         setSucceeded(true);
